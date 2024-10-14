@@ -53,10 +53,51 @@ namespace Hangman
             string tahmin = textTahmin.Text;
            
             
+            if(tahmin.Length > 1 ) {
+                if(tahminEdilecekKelime.Equals(tahmin))
+                {
+                    label1Ekran.Text = tahminEdilecekKelime;
+                    MessageBox.Show("Tebrikler! Þu kelimeyi doðru tahmin ettin: " + tahminEdilecekKelime);
+                    Tekrar();
+                }
+                else 
+                {
+                    tahminEdilenHatalýTahminler++;
+                    labelHata.Text = "Hatalý Tahmin: " + tahminEdilenHatalýTahminler;
+                    if (tahminEdilenHatalýTahminler == 1)
+                    {
+                        pictureBox1.Image = Resources.realKafa;
+                    }
+                    if (tahminEdilenHatalýTahminler == 2)
+                    {
+                        pictureBox1.Image = Resources.realGovde;
+                    }
+                    if (tahminEdilenHatalýTahminler == 3)
+                    {
+                        pictureBox1.Image = Resources.realBacak1;
+                    }
+                    if (tahminEdilenHatalýTahminler == 4)
+                    {
+                        pictureBox1.Image = Resources.realBacak2;
+                    }
+                    if (tahminEdilenHatalýTahminler == 5)
+                    {
+                        pictureBox1.Image = Resources.realKol1;
+                    }
+                    if (tahminEdilenHatalýTahminler == 6)
+                    {
+                        pictureBox1.Image = Resources.realKol2;
+                        MessageBox.Show("Hata yaptýnýz.");
 
+                        Tekrar();
+
+                    }
+                }
+            }
             if (tahmin.Length == 1 && char.IsLetter(tahmin[0]))
             {
                 char tahminMesajý = tahmin[0];
+            
                 if (!tahminEdilenHarfler.Contains(tahminMesajý))
                 {
                     tahminEdilenHarfler.Add(tahminMesajý);
@@ -90,19 +131,17 @@ namespace Hangman
                         if (tahminEdilenHatalýTahminler == 6)
                         {
                             pictureBox1.Image = Resources.realKol2;
-                            MessageBox.Show("Hata yaptýnýz.");
+                            label1Ekran.Text = tahminEdilecekKelime;
+                                MessageBox.Show("Oyun bitti! Kelime þuydu: " + tahminEdilecekKelime);
+                                Tekrar();
 
-                            Tekrar();
+                             
 
                         }
 
                     }
-                    if (tahminEdilenHatalýTahminler >= 80)
-                    {
-                        MessageBox.Show("Oyun bitti! Kelime þuydu: " + tahminEdilecekKelime);
-                        Tekrar();
-                    }
-                    else if (kelimeEkraný == tahminEdilecekKelime)
+                    
+                     if (kelimeEkraný == tahminEdilecekKelime)
                     {
                         MessageBox.Show("Tebrikler! Þu kelimeyi doðru tahmin ettin: " + tahminEdilecekKelime);
                         Tekrar();
