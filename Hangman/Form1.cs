@@ -4,7 +4,7 @@ using System.Xml.Linq;
 namespace Hangman
 {
     public partial class Form1 : Form
-        //merhaba
+     
     {
         private string tahminEdilecekKelime;
         private string kelimeEkraný;
